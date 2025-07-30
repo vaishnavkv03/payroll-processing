@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>{% block title %}ProPay Solutions{% endblock %}</title>
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
+
+    <style>
+        /* CSS Variables for a professional color scheme and easy changes */
+        :root {
+            --primary-color: #367EAA; /* A professional blue */
+            --secondary-color: #F9A620; /* An accent orange */
+            --background-color: #f7f9fc;
+            --surface-color: #ffffff;
+            --text-color: #343a40;
+            --text-light: #6c757d;
+            --border-radius: 8px;
+            --shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
+        }
+
+        /* Basic Reset and Body Styling */
+        *, *::before, *::after {
+            box-sizing: border-box;
+        }
+        body {
+            font-family: 'Poppins', sans-serif;
+            margin: 0;
+            background-color: var(--background-color);
+            color: var(--text-color);
+            line-height: 1.6;
+        }
+
+        /* --- Navigation Bar --- */
+        .header-nav {
+            background-color: var(--surface-color);
+            padding: 1rem 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            box-shadow: var(--shadow);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+        .nav-logo a {
+            color: var(--primary-color);
+            text-decoration: none;
+            font-weight: 700;
+            font-size: 1.5rem;
+            display: flex;
+            align-items: center;
+        }
+        .nav-logo .material-symbols-outlined {
+            margin-right: 8px;
+            font-size: 2rem;
+        }
+        .nav-links a {
+            color: var(--text-light);
+            text-decoration: none;
+            margin: 0 1rem;
+            font-weight: 500;
+            transition: color 0.3s ease;
+            display: inline-flex;
+            align-items: center;
+        }
+        .nav-links a:hover {
+            color: var(--primary-color);
+        }
+        .nav-links .material-symbols-outlined {
+            margin-right: 5px;
+        }
+        .nav-links .button-login {
+            background-color: var(--primary-color);
+            color: white;
+            padding: 0.5rem 1rem;
+            border-radius: var(--border-radius);
+            transition: background-color 0.3s ease, transform 0.2s ease;
+        }
+        .nav-links .button-login:hover {
+            background-color: #2a6a91;
+            color: white;
+            transform: translateY(-2px);
+        }
+        
+        /* --- Main Content Container with Animation --- */
+        .container {
+            max-width: 1100px;
+            margin: 2rem auto;
+            padding: 2rem;
+            animation: fadeIn 0.8s ease-in-out;
+        }
+        
+        /* Fade-in animation for page content */
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        
+    </style>
+</head>
+<body>
+    <nav class="header-nav">
+        <div class="nav-logo">
+            <a href="{% url 'home' %}">
+                <span class="material-symbols-outlined">payments</span>
+                ProPay
+            </a>
+        </div>
+        <div class="nav-links">
+            <a href="{% url 'home' %}"><span class="material-symbols-outlined">home</span>Home</a>
+            
+            {% if user.is_authenticated %}
+                <a href="{% url 'dashboard' %}"><span class="material-symbols-outlined">dashboard</span>Dashboard</a>
+                <a href="{% url 'logout' %}" class="button-login"><span class="material-symbols-outlined">logout</span>Logout</a>
+            {% else %}
+                <a href="{% url 'login' %}" class="button-login"><span class="material-symbols-outlined">login</span>Login</a>
+            {% endif %}
+            </div>
+    </nav>
+
+    <main class="container">
+        {% block content %}
+        {% endblock %}
+    </main>
+
+</body>
+</html>

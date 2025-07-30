@@ -1,0 +1,81 @@
+{% extends 'payroll/base.html' %}
+
+{% block title %}Employee Dashboard{% endblock %}
+
+{% block content %}
+<style>
+    .dashboard-header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-bottom: 2rem;
+    }
+    .employee-table {
+        width: 100%;
+        border-collapse: collapse;
+        background-color: var(--surface-color);
+        box-shadow: var(--shadow);
+        border-radius: var(--border-radius);
+        overflow: hidden; /* Ensures border-radius is respected by table */
+    }
+    .employee-table th, .employee-table td {
+        padding: 1rem;
+        text-align: left;
+        border-bottom: 1px solid #dee2e6;
+    }
+    .employee-table th {
+        background-color: #f8f9fa;
+        font-weight: 600;
+        color: var(--text-light);
+    }
+    .employee-table tr:last-child td {
+        border-bottom: none;
+    }
+    .employee-table tr:hover {
+        background-color: #f1f3f5;
+    }
+    .action-link {
+        color: var(--primary-color);
+        text-decoration: none;
+        font-weight: 500;
+        transition: text-decoration 0.2s;
+    }
+    .action-link:hover {
+        text-decoration: underline;
+    }
+</style>
+
+<div class="dashboard-header">
+    <h1>Employee Dashboard</h1>
+    </div>
+
+<table class="employee-table">
+    <thead>
+        <tr>
+            <th>Employee ID</th>
+            <th>Name</th>
+            <th>Date Joined</th>
+            <th>Action</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for employee in employees %}
+        <tr>
+            <td>{{ employee.employee_id }}</td>
+            <td>{{ employee.name }}</td>
+            <td>{{ employee.date_joined|date:"d M, Y" }}</td>
+            <td>
+                <a href="{% url 'employee_detail' employee.id %}" class="action-link">Process Payroll</a>
+            </td>
+        </tr>
+        {% empty %}
+        <tr>
+            <td colspan="4" style="text-align: center; padding: 2rem;">
+                No employees found. You can add them in the <a href="/admin/payroll/employee/" class="action-link">Admin Panel</a>.
+            </td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+
+{% endblock %}

@@ -121,3 +121,6 @@ STATIC_URL = 'static/'
 # https://docs.djangoproject.com/en/5.2/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+# Add these lines at the very bottom of settings.py
+LOGIN_REDIRECT_URL = '/payroll/dashboard/'
+LOGOUT_REDIRECT_URL = '/'

@@ -1,0 +1,95 @@
+{% extends 'payroll/base.html' %}
+{% load static %}
+
+{% block title %}ProPay Solutions - Smart Payroll Processing{% endblock %}
+
+{% block content %}
+<style>
+    /* Styles specific to the homepage */
+    .hero {
+        text-align: center;
+        padding: 4rem 1rem;
+        background: linear-gradient(135deg, rgba(54, 126, 170, 0.05), rgba(249, 166, 32, 0.05));
+        border-radius: var(--border-radius);
+        margin-bottom: 3rem;
+    }
+    .hero h1 {
+        font-size: 3rem;
+        font-weight: 700;
+        margin-bottom: 0.5rem;
+        color: var(--primary-color);
+    }
+    .hero p {
+        font-size: 1.2rem;
+        color: var(--text-light);
+        margin-bottom: 2rem;
+    }
+    .hero .cta-button {
+        display: inline-block;
+        background-color: var(--secondary-color);
+        color: var(--text-color);
+        padding: 0.8rem 2rem;
+        text-decoration: none;
+        font-weight: 600;
+        border-radius: var(--border-radius);
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+    .hero .cta-button:hover {
+        transform: translateY(-3px);
+        box-shadow: 0 6px 15px rgba(0,0,0,0.1);
+    }
+
+    .features-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+        gap: 2rem;
+        text-align: center;
+    }
+    .feature-card {
+        background-color: var(--surface-color);
+        padding: 2rem;
+        border-radius: var(--border-radius);
+        box-shadow: var(--shadow);
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+    .feature-card:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 8px 25px rgba(0, 0, 0, 0.08);
+    }
+    .feature-card .material-symbols-outlined {
+        font-size: 3rem;
+        color: var(--primary-color);
+        margin-bottom: 1rem;
+    }
+    .feature-card h3 {
+        font-weight: 600;
+        margin-bottom: 0.5rem;
+    }
+</style>
+
+<section class="hero">
+    <h1>Effortless Payroll, Elevated.</h1>
+    <p>The smart, secure, and simple solution for processing employee salaries.</p>
+    <a href="#" class="cta-button">Login to Get Started</a>
+</section>
+
+<section class="features">
+    <div class="features-grid">
+        <div class="feature-card">
+            <span class="material-symbols-outlined">groups</span>
+            <h3>Employee Management</h3>
+            <p>Easily manage all employee records and salary structures in one central location.</p>
+        </div>
+        <div class="feature-card">
+            <span class="material-symbols-outlined">calculate</span>
+            <h3>Dynamic Calculations</h3>
+            <p>Process salaries accurately with dynamic calculations for leave and deductions.</p>
+        </div>
+        <div class="feature-card">
+            <span class="material-symbols-outlined">receipt_long</span>
+            <h3>Instant Payslips</h3>
+            <p>Generate professional and easy-to-understand payslips for your employees in seconds.</p>
+        </div>
+    </div>
+</section>
+{% endblock %}

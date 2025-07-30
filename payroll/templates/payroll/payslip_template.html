@@ -1,0 +1,77 @@
+{% extends 'payroll/base.html' %}
+
+{% block title %}Payslip for {{ payslip.employee_name }}{% endblock %}
+
+{% block content %}
+<style>
+    .payslip-box { max-width: 700px; margin: auto; background: var(--surface-color); padding: 2rem; border-radius: var(--border-radius); box-shadow: var(--shadow); }
+    .payslip-header { text-align: center; border-bottom: 2px solid #eee; padding-bottom: 1rem; margin-bottom: 2rem; }
+    .payslip-header h2 { margin: 0; }
+    .payslip-details { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; margin-bottom: 2rem; }
+    .detail-item { font-size: 0.9rem; }
+    .detail-item strong { color: var(--text-light); }
+    .salary-table { width: 100%; border-collapse: collapse; }
+    .salary-table th, .salary-table td { padding: 0.8rem; text-align: left; }
+    .salary-table th { background-color: #f8f9fa; }
+    .salary-table .section-header { font-weight: 600; font-size: 1.1rem; color: var(--primary-color); padding-top: 1.5rem; }
+    .salary-table .amount { text-align: right; font-weight: 500; }
+    .salary-table .total-row td { font-weight: bold; border-top: 2px solid #dee2e6; }
+    .net-salary { text-align: center; margin-top: 2rem; padding: 1rem; background-color: #eaf3fa; border-radius: var(--border-radius); }
+    .net-salary strong { font-size: 1.3rem; color: var(--primary-color); }
+</style>
+
+<div class="payslip-box">
+    <div class="payslip-header">
+        <h2>Payslip</h2>
+        <p>{{ month_year }}</p>
+    </div>
+    <div class="payslip-details">
+        <div class="detail-item"><strong>Employee Name:</strong><br>{{ employee.name }}</div>
+        <div class="detail-item"><strong>Employee ID:</strong><br>{{ employee.employee_id }}</div>
+        <div class="detail-item"><strong>Date Joined:</strong><br>{{ employee.date_joined|date:"d M, Y" }}</div>
+        <div class="detail-item"><strong>Salary Structure:</strong><br>Basic + HRA + Allowances</div>
+    </div>
+    
+    <table class="salary-table">
+        <tr>
+            <td colspan="2" class="section-header">Earnings</td>
+        </tr>
+        <tr>
+            <td>Monthly Gross Salary</td>
+            <td class="amount">₹ {{ payslip.monthly_gross }}</td>
+        </tr>
+        <tr>
+            <td>LWP Deduction</td>
+            <td class="amount">- ₹ {{ payslip.lwp_deduction }}</td>
+        </tr>
+        <tr class="total-row">
+            <td>Earned Gross Salary</td>
+            <td class="amount">₹ {{ payslip.earned_gross }}</td>
+        </tr>
+
+        <tr>
+            <td colspan="2" class="section-header">Deductions</td>
+        </tr>
+        <tr>
+            <td>Provident Fund (PF)</td>
+            <td class="amount">₹ {{ payslip.employee_pf }}</td>
+        </tr>
+        <tr>
+            <td>Professional Tax (PT)</td>
+            <td class="amount">₹ {{ payslip.professional_tax }}</td>
+        </tr>
+        <tr>
+            <td>TDS (Income Tax)</td>
+            <td class="amount">₹ {{ payslip.tds }}</td>
+        </tr>
+        <tr class="total-row">
+            <td>Total Deductions</td>
+            <td class="amount">₹ {{ payslip.total_deductions }}</td>
+        </tr>
+    </table>
+
+    <div class="net-salary">
+        <strong>Net Salary Payable: ₹ {{ payslip.net_salary }}</strong>
+    </div>
+</div>
+{% endblock %}
