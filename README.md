@@ -71,13 +71,6 @@ pip install -r requirements.txt
 Database Setup
 Configuration: Open the config.py (or equivalent) file and update the database connection string with your credentials.
 
-# Example for a Flask application using SQLite
-# app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///site.db'
-# Example for PostgreSQL
-# app.config['SQLALCHEMY_DATABASE_URI'] = 'postgresql://user:password@localhost/payroll_db'
-
-Database Migrations: If your project uses a migration tool (e.g., Flask-Migrate, Django Migrations), run the migration commands.
-
 # Example for Flask-Migrate
 # flask db init
 # flask db migrate -m "Initial migration"
@@ -99,12 +92,6 @@ or
 # python app.py
 
 The application should now be running on http://127.0.0.1:5000 or a similar address.
-
-🤝 Contributing
-Contributions are what make the open-source community an amazing place to learn, inspire, and create. Any contributions you make are greatly appreciated.
-
-Fork the Project
-
 Create your Feature Branch (git checkout -b feature/AmazingFeature)
 
 Commit your Changes (git commit -m 'Add some AmazingFeature')
