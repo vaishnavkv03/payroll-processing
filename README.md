@@ -54,11 +54,6 @@ It is best practice to use a virtual environment to manage dependencies.
 python -m venv venv
 
 Activate the virtual environment:
-
-On macOS/Linux:
-
-source venv/bin/activate
-
 On Windows:
 
 venv\Scripts\activate
@@ -93,10 +88,6 @@ or
 
 The application should now be running on http://127.0.0.1:5000 or a similar address.
 Create your Feature Branch (git checkout -b feature/AmazingFeature)
-
 Commit your Changes (git commit -m 'Add some AmazingFeature')
-
-Push to the Branch (git push origin feature/AmazingFeature)
-
+Push to the Branch (git push origin feature/AmazingFeature
 Open a Pull Request
-
