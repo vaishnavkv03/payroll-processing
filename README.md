@@ -21,8 +21,6 @@ Statutory contributions
 
 Adaptive Rule Engine: A core feature that allows administrators to easily update rules, laws, or guidance without requiring core code changes, ensuring the system remains compliant.
 
-Reporting & Analytics: Generate detailed payroll reports for financial audits and internal record-keeping.
-
 🛠️ Tech Stack
 Backend: Python
 
