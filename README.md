@@ -26,8 +26,6 @@ Backend: Python
 
 Frontend: HTML
 
-Database: (Specify your database here, e.g., PostgreSQL, MySQL, SQLite)
-
 📦 Getting Started
 Follow these steps to get a copy of the project up and running on your local machine.
 
